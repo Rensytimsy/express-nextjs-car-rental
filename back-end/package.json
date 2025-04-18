@@ -1,5 +1,24 @@
 {
   "dependencies": {
-    "express": "^5.1.0"
+    "@prisma/client": "^6.6.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "nodemon": "^3.1.9"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.1",
+    "dotenv": "^16.5.0",
+    "prisma": "^6.6.0",
+    "ts-node": "^10.9.2",
+    "tsc-node": "^0.0.3",
+    "typescript": "^5.8.3",
+    "zod": "^3.24.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"npx ts-node\" src/server.ts",
+    "lint": "eslint 'src/**/*.ts'"
   }
 }
