@@ -5,9 +5,11 @@ import { errorHandler } from "./middlewares/errorHandler";
 import {resolver} from "../graphql/resolver"
 import { graphqlHTTP } from "express-graphql";
 import { testSchema } from "../graphql/types";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api", sampleData);
 app.use("/api", userRoutes);

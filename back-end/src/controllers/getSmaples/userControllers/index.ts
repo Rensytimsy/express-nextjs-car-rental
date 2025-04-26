@@ -15,7 +15,8 @@ export const createUser = async(req: Request, res: Response, next: NextFunction 
             secondName, 
             tel, 
             email, 
-            password
+            password,
+            isAdmin
         } : z.infer<typeof userSchema> = req.body;
 
         let salt = await bcrypt.genSalt(10);
@@ -28,7 +29,8 @@ export const createUser = async(req: Request, res: Response, next: NextFunction 
                 email,
                 tel,
                 firstName,
-                password: hash
+                password: hash,
+                isAdmin: false
             }
         });
 

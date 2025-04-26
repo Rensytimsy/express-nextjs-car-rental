@@ -15,11 +15,12 @@ datasource db {
 }
 
 model Users {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  userName   String @unique
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  userName   String  @unique
   tel        Int
   firstName  String
   secondName String
   email      String
   password   String
+  isAdmin    Boolean
 }

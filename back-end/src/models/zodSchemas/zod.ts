@@ -1,4 +1,4 @@
-import {object, string, number} from "zod"
+import {object, string, number, boolean} from "zod"
 
 
 export const userSchema =  object({
@@ -7,6 +7,7 @@ export const userSchema =  object({
     secondName: string({required_error: "Please provide a secondName"}).min(3).max(12),
     email: string({required_error: "Please provide an email for your account"}).email(),
     tel: number({required_error: "Provide your phone number"}),
-    password: string({required_error: "Please provide your account password"})
+    password: string({required_error: "Please provide your account password"}),
+    isAdmin: boolean()
 });
 

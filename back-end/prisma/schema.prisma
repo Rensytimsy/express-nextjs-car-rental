@@ -22,4 +22,5 @@ model Users {
   secondName String
   email      String
   password   String
+  isAdmin    Boolean
 }
