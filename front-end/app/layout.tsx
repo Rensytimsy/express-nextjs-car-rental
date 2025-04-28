@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="">
+        <div className="font-lora">
           <div className="flex flex-row">
           <SideNavigation />
           <NavigationMenuDemo />

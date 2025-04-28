@@ -54,7 +54,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="ml-[35%] flex flex-row gap-15 bg-white fixed p-2">
+    <div className="ml-[30%] flex flex-row gap-15 bg-white w-screen fixed p-2 z-100">
       <div>
         <h3 className="mt-3 text-xl">Go-Rides</h3>
       </div>
@@ -109,7 +109,7 @@ export function NavigationMenuDemo() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link href="/docs">
               <NavigationMenuLink className="text-md">
                 Documentation
               </NavigationMenuLink>
