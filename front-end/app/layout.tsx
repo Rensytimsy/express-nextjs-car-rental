@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideNavigation from "./pageComponents/sideNavigation";
-import {NavigationMenuDemo} from "./pageComponents/desktopNavigation";
-
+import { NavigationMenuDemo } from "./pageComponents/desktopNavigation";
+import MobileNavigationBar from "./pageComponents/mobileNavigation";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,11 +31,12 @@ export default function RootLayout({
       >
         <div className="font-lora">
           <div className="flex flex-row">
-          <SideNavigation />
-          <NavigationMenuDemo />
+            <SideNavigation />
+            <NavigationMenuDemo />
+            <MobileNavigationBar />
           </div>
-          <div className="relative ml-15 mt-15 min-w-[95vw]">
-           {children}
+          <div className="relative ml-15 mt-15 w-auto">
+            {children}
           </div>
         </div>
       </body>

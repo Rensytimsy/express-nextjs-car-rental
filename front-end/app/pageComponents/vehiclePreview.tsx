@@ -4,7 +4,7 @@ let randomCar = vehiclesList[1];
 
 export default function VehiclePreviewPage() {
     return (
-        <div className="p-4 font-stylish">
+        <div className="hidden lg:block p-4 font-stylish">
             <div>
                 {/* Selected vehicle images display */}
                 <div>

@@ -54,8 +54,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="ml-[30%] flex flex-row gap-15 bg-white w-screen fixed p-2 z-100">
-      <div>
+    <div className="hidden lg:flex lg:w-screen lg:flex-row ml-[30%] gap-15 bg-white w-screen fixed p-2 z-50">
+      <div className="">
         <h3 className="mt-3 text-xl">Go-Rides</h3>
       </div>
       <NavigationMenu className="mt-2 text-md">

@@ -34,56 +34,56 @@ import {
 // import axios from "axios";
 // import CarDisplayComponent from "./carDispalay";
 
-export default function FilterComponent(){
-    const [selectedRentType, setSelectedRentType] = useState("Select Rent Type");
-    const rentTypes = ["Daily", "Weekly", "Monthly", "Long-Term", "Hourly"];
-    const [priceRange, setPriceRange] = useState<[number, number]>([3500, 30000]);
-    const [choosenCar, setChoosenCar] = useState<string>("");
-  
-    const [brand, setBrand] = useState<string>("");
-    const [model, setModel] = useState<string>("");
-    const [year, setYear] = useState<string>("");
-  
-    const carBrands = ["Toyota", "Honda", "Ford", "BMW", "Audi"];
-    const carModels = ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible"];
-    const years = Array.from({ length: 30 }, (_, i) => (2023 - i).toString());
-    const [selectedTransmission, setSelectedTransmission] = useState(
-      "Select Transmission"
+export default function FilterComponent() {
+  const [selectedRentType, setSelectedRentType] = useState("Select Rent Type");
+  const rentTypes = ["Daily", "Weekly", "Monthly", "Long-Term", "Hourly"];
+  const [priceRange, setPriceRange] = useState<[number, number]>([3500, 30000]);
+  const [choosenCar, setChoosenCar] = useState<string>("");
+
+  const [brand, setBrand] = useState<string>("");
+  const [model, setModel] = useState<string>("");
+  const [year, setYear] = useState<string>("");
+
+  const carBrands = ["Toyota", "Honda", "Ford", "BMW", "Audi"];
+  const carModels = ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible"];
+  const years = Array.from({ length: 30 }, (_, i) => (2023 - i).toString());
+  const [selectedTransmission, setSelectedTransmission] = useState(
+    "Select Transmission"
+  );
+  const transmissionTypes = ["Automatic", "Manual", "Semi-Automatic"];
+
+  const [fuelType, setFuelType] = useState<string>("");
+  const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>([]);
+
+  const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "CNG"];
+  const handleFuelTypeChange = (type: string) => {
+    setSelectedFuelTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
     );
-    const transmissionTypes = ["Automatic", "Manual", "Semi-Automatic"];
-  
-    const [fuelType, setFuelType] = useState<string>("");
-    const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>([]);
-  
-    const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "CNG"];
-    const handleFuelTypeChange = (type: string) => {
-      setSelectedFuelTypes((prev) =>
-        prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-      );
-    };
-  
-    // const [foundVehicles, setFoundVehicles] = useState<z.infer<typeof vehicleSchema>[]>([]);
-  
-    // //fetch vehicles on search feed
-    // useEffect(() => {
-    //   const filterCar = async() => {
-    //     try{
-    //       const response = await axios.get(`http://localhost:3000/api/vehicles`);
-    //       const filteredList = response.data.foundVehicles;
-    //       const searchReturn = filteredList.filter((car: z.infer<typeof vehicleSchema>) => (
-    //         car.vehicleModel.toLowerCase().includes(choosenCar?.toLocaleLowerCase())
-    //       ));
-    //       setFoundVehicles(searchReturn);
-    //     }catch(error){
-    //       console.log(error);
-    //     }
-    //   }
-  
-    //   filterCar();
-    // }, [choosenCar]);
-  
-    return (
-      <div className="flex flex-row w-full space-x-8">
+  };
+
+  // const [foundVehicles, setFoundVehicles] = useState<z.infer<typeof vehicleSchema>[]>([]);
+
+  // //fetch vehicles on search feed
+  // useEffect(() => {
+  //   const filterCar = async() => {
+  //     try{
+  //       const response = await axios.get(`http://localhost:3000/api/vehicles`);
+  //       const filteredList = response.data.foundVehicles;
+  //       const searchReturn = filteredList.filter((car: z.infer<typeof vehicleSchema>) => (
+  //         car.vehicleModel.toLowerCase().includes(choosenCar?.toLocaleLowerCase())
+  //       ));
+  //       setFoundVehicles(searchReturn);
+  //     }catch(error){
+  //       console.log(error);
+  //     }
+  //   }
+
+  //   filterCar();
+  // }, [choosenCar]);
+
+  return (
+    <div className="hidden lg:block flex flex-row w-full space-x-8">
       <div className="relative">
         <div className="p-2">
           <div className="flex justify-between mt-2 mb-4">
@@ -199,7 +199,7 @@ export default function FilterComponent(){
                       </SelectContent>
                     </Select>
                   </div>
-  
+
                   {/* Car Model Selector */}
                   <div>
                     <Label className="text-sm font-medium text-gray-700 dark:text-white dark:font-semibold">
@@ -218,7 +218,7 @@ export default function FilterComponent(){
                       </SelectContent>
                     </Select>
                   </div>
-  
+
                   {/* Year Selector */}
                   <div>
                     <Label className="text-sm font-medium text-gray-700 dark:text-white dark:font-semibold">
@@ -305,6 +305,6 @@ export default function FilterComponent(){
           </Button>
         </div> */}
       </div>
-      </div>
-    );
+    </div>
+  );
 }

@@ -10,7 +10,7 @@ import {
 
 export default function SideNavigation() {
   return (
-    <div className="min-w-12 flex flex-col gap-40 min-h-[100vh]  p-2 bg-[var(--dark-blue)] fixed w-10">
+    <div className="hidden lg:block min-w-12 flex flex-col gap-40 min-h-[100vh]  p-2 bg-[var(--dark-blue)] fixed w-10">
       <ul className="flex flex-col gap-8 mt-10 text-white curor-pointer">
         <li className="text-xl font-semibold">GR</li>
         <li>
