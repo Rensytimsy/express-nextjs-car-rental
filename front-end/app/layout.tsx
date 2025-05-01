@@ -4,6 +4,9 @@ import "./globals.css";
 import SideNavigation from "./pageComponents/sideNavigation";
 import { NavigationMenuDemo } from "./pageComponents/desktopNavigation";
 import MobileNavigationBar from "./pageComponents/mobileNavigation";
+import { FilterDataContextProvider } from "./pageContextData/filterContext";
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,7 +39,9 @@ export default function RootLayout({
             <MobileNavigationBar />
           </div>
           <div className="relative ml-15 mt-15 w-auto">
-            {children}
+            <FilterDataContextProvider>
+              {children}
+            </FilterDataContextProvider>
           </div>
         </div>
       </body>

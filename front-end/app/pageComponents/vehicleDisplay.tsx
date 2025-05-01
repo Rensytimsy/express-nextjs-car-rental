@@ -1,7 +1,13 @@
+"use client"
+
 import { vehiclesList } from "@/jsonDataTest/vehicle"
-import { Fuel, Car, MapPin, Funnel } from "lucide-react"
+import { Fuel, Car, MapPin, Funnel, Filter } from "lucide-react"
 import FilterOnMobileComponent from "./filterOnMobile";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerDescription, DrawerHeader } from "@/components/ui/drawer";
+// import { useFilterData } from "../pageContextData/filterContext";
+import { useState } from "react";
+import { useFilterData } from "../pageContextData/filterContext";
+import { FilterData } from "../pageContextData/filterContext";
 
 export interface vehicle {
     model: string,
@@ -15,8 +21,44 @@ export interface vehicle {
 }
 
 
+//filter data in product function
+const vehiclesListData = ({allVehicles} : {allVehicles: vehicle[]}) => {
+    //Get the search data that is passed on the filter component
+    const {searchData} = useFilterData();
+
+    const filteredVehicleList = applyFilters(allVehicles, searchData);
+    const displayVehicles = allAvailableVehicles(searchData) ? allVehicles : filteredVehicleList;
+    return displayVehicles;
+
+}
+
+
+const applyFilters = (allVehicles: vehicle[], searchData: FilterData) => {
+    if (allAvailableVehicles(searchData)) return allVehicles;
+
+    return {};
+}
+
+function allAvailableVehicles(filters: FilterData): boolean {
+    return (
+        !filters.vehicleType 
+    );
+}
+
 
 export default function VehicleListDisplay() {
+    // const {filter} = useFilterData();
+    // console.log(filter?.newData?.vehicleType);
+
+    //vehicle filter method 
+    // const [newVehicle, setNewVehicle] = useState<vehicle[] | null>(null);
+    // const filterVehicleData = () => {
+    //     let filteredData = vehiclesList.filter((car) => (car.model === "toyota"));
+    //     console.log(filteredData);
+    // }
+    // filterVehicleData();
+
+
     return (
         <div className="w-screen lg:w-auto lg:max-w-screen lg:max-h-[100vh] z-50">
             <div className="lg:hidden absolute -top-10 flex items-center justify-center w-screen">

@@ -15,6 +15,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerFooter,
+  DrawerClose
 } from "@/components/ui/drawer";
 import {
   Select,
@@ -34,11 +35,21 @@ import {
 // import axios from "axios";
 // import CarDisplayComponent from "./carDispalay";
 
+import { useFilterData } from "../pageContextData/filterContext";
+import { FilterData } from "../pageContextData/filterContext";
+
+interface VehicleDetails {
+  model: string,
+  year: string,
+  brand: string
+}
+
 export default function FilterComponent() {
   const [selectedRentType, setSelectedRentType] = useState("Select Rent Type");
   const rentTypes = ["Daily", "Weekly", "Monthly", "Long-Term", "Hourly"];
   const [priceRange, setPriceRange] = useState<[number, number]>([3500, 30000]);
-  const [choosenCar, setChoosenCar] = useState<string>("");
+  const [choosenCar, setChoosenCar] = useState<VehicleDetails | null>(null);
+  // console.log(priceRange);
 
   const [brand, setBrand] = useState<string>("");
   const [model, setModel] = useState<string>("");
@@ -62,25 +73,19 @@ export default function FilterComponent() {
     );
   };
 
-  // const [foundVehicles, setFoundVehicles] = useState<z.infer<typeof vehicleSchema>[]>([]);
+  const { searchData, resetFilter, updateFilter } = useFilterData();
 
-  // //fetch vehicles on search feed
-  // useEffect(() => {
-  //   const filterCar = async() => {
-  //     try{
-  //       const response = await axios.get(`http://localhost:3000/api/vehicles`);
-  //       const filteredList = response.data.foundVehicles;
-  //       const searchReturn = filteredList.filter((car: z.infer<typeof vehicleSchema>) => (
-  //         car.vehicleModel.toLowerCase().includes(choosenCar?.toLocaleLowerCase())
-  //       ));
-  //       setFoundVehicles(searchReturn);
-  //     }catch(error){
-  //       console.log(error);
-  //     }
-  //   }
+  const searchDataFilter = (type: string) => {
+    updateFilter({ vehicleType: type, rentType: "one day", price: priceRange[0].toString() });
+  }
 
-  //   filterCar();
-  // }, [choosenCar]);
+
+  const searchFilter = (model: string, year: string, brand: string) => {
+    setChoosenCar({ model, year, brand });
+    updateFilter({ vehicelDetails: { year, brand, model } });
+  }
+
+  // console.log(searchData);
 
   return (
     <div className="hidden lg:block flex flex-row w-full space-x-8">
@@ -88,7 +93,9 @@ export default function FilterComponent() {
         <div className="p-2">
           <div className="flex justify-between mt-2 mb-4">
             <p className="text-black dark:text-black font-semibold ml-4">Filter By</p>
-            <p className="text-blue-700 cursor-pointer hover:underline">Reset filter</p>
+            <button className="text-blue-700 cursor-pointer hover:underline"
+              onClick={() => resetFilter()}
+            >Reset filter</button>
           </div>
           <div className="border  rounded-2xl bg-gray-50">
             <div className="relative left-[10%]">
@@ -97,7 +104,7 @@ export default function FilterComponent() {
                 type="text"
                 placeholder="search here"
                 className="p-2 outline-none w-[80%] bg-gray-50 dark:text-black dark:border-none"
-                onChange={(e) => setChoosenCar(e.target.value)}
+                onChange={(e) => searchDataFilter(e.target.value)}
               />
             </div>
           </div>
@@ -239,9 +246,11 @@ export default function FilterComponent() {
                   </div>
                 </div>
                 <DrawerFooter>
-                  <Button onClick={() => console.log({ brand, model, year })}>
-                    Apply Filters
-                  </Button>
+                  <DrawerClose asChild>
+                    <Button onClick={() => searchFilter(brand, model, year)}>
+                      Apply Filters
+                    </Button>
+                  </DrawerClose>
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
@@ -297,13 +306,13 @@ export default function FilterComponent() {
             </div>
           </div>
         </div>
-        {/* <div className="mt-10 border-b">
+        <div className="mt-10 border-b">
           <Button
-          className="w-full bg-orangeColor"
+          className="w-full bg-black"
           >
               Find Vehicle
           </Button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
