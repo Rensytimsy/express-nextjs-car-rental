@@ -15,12 +15,33 @@ datasource db {
 }
 
 model Users {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  userName   String  @unique
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  userName   String     @unique
   tel        Int
   firstName  String
   secondName String
   email      String
   password   String
   isAdmin    Boolean
+  vehicle    Vehicles[]
+}
+
+model Vehicles {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @unique @db.ObjectId
+  owner        Users    @relation(fields: [userId], references: [id])
+  model        String
+  brand        String
+  fuelCapacity Float
+  color        String
+  images       String[]
+  location     Float[]
+  price        Float
+  duration     Float
+  insuarance   String
+  mileage      Float
+  vehicleType  String
+  features     String[]
+  available    Boolean
+  year         String
 }

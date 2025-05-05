@@ -121,6 +121,25 @@ exports.Prisma.UsersScalarFieldEnum = {
   isAdmin: 'isAdmin'
 };
 
+exports.Prisma.VehiclesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  model: 'model',
+  brand: 'brand',
+  fuelCapacity: 'fuelCapacity',
+  color: 'color',
+  images: 'images',
+  location: 'location',
+  price: 'price',
+  duration: 'duration',
+  insuarance: 'insuarance',
+  mileage: 'mileage',
+  vehicleType: 'vehicleType',
+  features: 'features',
+  available: 'available',
+  year: 'year'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -133,7 +152,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Users: 'Users'
+  Users: 'Users',
+  Vehicles: 'Vehicles'
 };
 
 /**
