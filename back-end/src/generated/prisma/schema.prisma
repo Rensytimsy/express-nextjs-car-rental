@@ -28,7 +28,7 @@ model Users {
 
 model Vehicles {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @unique @db.ObjectId
+  userId       String   @db.ObjectId
   owner        Users    @relation(fields: [userId], references: [id])
   model        String
   brand        String

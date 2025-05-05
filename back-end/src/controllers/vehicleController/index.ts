@@ -55,19 +55,8 @@ export const uploadVehicle = async(req: Request, res: Response, next: NextFuncti
 
 export const getVehicles = async(req: Request, res: Response, next: NextFunction) => {
     try{
-        let sampleData = [
-            {
-                message: "Hello world"
-            },
-            {
-                message: "Happy coding world"
-            },
-            {
-                message: "Happy world"
-            },
-        ];
-
-        res.status(200).json({data: sampleData});
+       const getVehicles = await prisma.vehicles.findMany();
+        res.status(200).json({data: getVehicles});
     }catch(error: any){
         next(error);
     }

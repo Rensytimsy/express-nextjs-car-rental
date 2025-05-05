@@ -31,7 +31,7 @@ export const UserLogin = async(req: Request, res: Response, next: NextFunction) 
         let isPassword = await bcrypt.compare(password, isUser.password);
         if (!isPassword) return next(customError(400, "Incorrect password"));
 
-        let generatedToken = jwt.sign({ id: isUser.id, admin: isUser.isAdmin }, jwt_secret);
+        let generatedToken = jwt.sign({ id: isUser.id, isAdmin: isUser.isAdmin }, jwt_secret);
 
         res.cookie("token", generatedToken, { sameSite: "strict", httpOnly: true, secure: false })
            .status(200)
@@ -40,3 +40,4 @@ export const UserLogin = async(req: Request, res: Response, next: NextFunction) 
         next(error);
     }
 }
+ 

@@ -3384,10 +3384,10 @@ export namespace Prisma {
 
   export type VehiclesWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId?: string
     AND?: VehiclesWhereInput | VehiclesWhereInput[]
     OR?: VehiclesWhereInput[]
     NOT?: VehiclesWhereInput | VehiclesWhereInput[]
+    userId?: StringFilter<"Vehicles"> | string
     model?: StringFilter<"Vehicles"> | string
     brand?: StringFilter<"Vehicles"> | string
     fuelCapacity?: FloatFilter<"Vehicles"> | number
@@ -3403,7 +3403,7 @@ export namespace Prisma {
     available?: BoolFilter<"Vehicles"> | boolean
     year?: StringFilter<"Vehicles"> | string
     owner?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-  }, "id" | "userId">
+  }, "id">
 
   export type VehiclesOrderByWithAggregationInput = {
     id?: SortOrder

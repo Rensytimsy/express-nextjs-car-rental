@@ -25,17 +25,19 @@ export const VerifyUserToken = async(req: CustomRequest, res: Response, next: Ne
     try{
         VerifyToken(req, res, error => {
             try{
-                if((req.data as any).id){
-                    res.status(200).json("User authenticated");
+                if(req.data?.id){
+                    // res.status(200).json("User authenticated"); //Uncomment this line when testing authentication
+                    next();
+                }else{
+                    res.status(400).json({message: "Unauthorized!, Please login"})
                 }
-
             }catch(error){
                 next(error);
             }
         })
     }catch(error){
         next(error);
-    }
+    } 
 }
 
 
@@ -43,10 +45,12 @@ export const VerifyAdmin = async(req: CustomRequest, res: Response, next: NextFu
     try{
         VerifyToken(req, res, error => {
             try{
-                if((req.data as any).isAdmin  == true){
-                    res.status(200).json("Hello admin");
+                if(req.data?.isAdmin  == true){
+                    // res.status(200).json("Hello admin"); // Uncomment this line when testing authentication
+                    next();
+                }else{
+                    res.status(200).json({message: "Unauthorized!"});
                 }
-                res.status(400).json("you are not an admin");
             }catch(error){
                 next(error);
             }

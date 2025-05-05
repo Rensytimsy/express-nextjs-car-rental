@@ -10,7 +10,7 @@ router.post("/user", createUser);
 router.get("/user", VerifyToken, getUsers);
 router.delete("/user/:id", deleteUsers);
 router.post("/login", UserLogin);
-router.get("/verify", VerifyUserToken);
+router.get("/verify", VerifyUserToken); 
 router.get("/admin", VerifyAdmin);
 
 export default router;
