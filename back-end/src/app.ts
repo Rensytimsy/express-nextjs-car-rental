@@ -7,9 +7,18 @@ import {resolver} from "../graphql/resolver"
 import { graphqlHTTP } from "express-graphql";
 import { testSchema } from "../graphql/types";
 import cookieParser from "cookie-parser";
+import Cors from "cors";
+
+const cors_config  = Cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+});
+
 
 const app = express();
 app.use(express.json());
+app.use(cors_config);
 app.use(cookieParser());
 
 app.use("/api", sampleData);

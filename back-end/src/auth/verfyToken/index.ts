@@ -20,7 +20,7 @@ export const VerifyToken = async(req: CustomRequest, res: Response, next: NextFu
     }
 }
 
-
+ 
 export const VerifyUserToken = async(req: CustomRequest, res: Response, next: NextFunction) => {
     try{
         VerifyToken(req, res, error => {

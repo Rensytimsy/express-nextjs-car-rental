@@ -19,7 +19,7 @@ export const UserLogin = async(req: Request, res: Response, next: NextFunction) 
         if (typeof userName !== 'string' || typeof password !== 'string') {
             return next(customError(400, "Username and password must be strings"));
         }
-
+ 
         const credentials: SignInCredentials = { userName, password };
 
         const isUser = await prisma.users.findUnique({
@@ -35,7 +35,7 @@ export const UserLogin = async(req: Request, res: Response, next: NextFunction) 
 
         res.cookie("token", generatedToken, { sameSite: "strict", httpOnly: true, secure: false })
            .status(200)
-           .json("User logged in");
+           .json({user: isUser});
     } catch (error) {
         next(error);
     }
