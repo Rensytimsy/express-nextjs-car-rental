@@ -85,7 +85,7 @@ export default function FilterComponent() {
     updateFilter({ vehicelDetails: { year, brand, model } });
   }
 
-  // console.log(searchData);
+  console.log(searchData);
 
   return (
     <div className="hidden lg:block flex flex-row w-full space-x-8">
