@@ -3297,17 +3297,17 @@ export namespace Prisma {
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     userName?: string
+    email?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
     tel?: IntFilter<"Users"> | number
     firstName?: StringFilter<"Users"> | string
     secondName?: StringFilter<"Users"> | string
-    email?: StringFilter<"Users"> | string
     password?: StringFilter<"Users"> | string
     isAdmin?: BoolFilter<"Users"> | boolean
     vehicle?: VehiclesListRelationFilter
-  }, "id" | "userName">
+  }, "id" | "userName" | "email">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder

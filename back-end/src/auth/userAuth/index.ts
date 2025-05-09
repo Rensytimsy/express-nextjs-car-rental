@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 let prisma = new PrismaClient();
 interface SignInCredentials  {
-    userName: string,
+    email: string,
     password: string
 }
 
@@ -14,19 +14,19 @@ let jwt_secret:string = process.env.JWT_SECRET || "";
 
 export const UserLogin = async(req: Request, res: Response, next: NextFunction) => {
     try {
-        const { userName, password } = req.body;
+        const { email, password } = req.body;
 
-        if (typeof userName !== 'string' || typeof password !== 'string') {
+        if (typeof email !== 'string' || typeof password !== 'string') {
             return next(customError(400, "Username and password must be strings"));
         }
  
-        const credentials: SignInCredentials = { userName, password };
+        const credentials: SignInCredentials = { email, password };
 
         const isUser = await prisma.users.findUnique({
-            where: { userName: credentials.userName }
+            where: { email: credentials.email }
         });
 
-        if (!isUser) return next(customError(403, "Invalid username!"));
+        if (!isUser) return next(customError(403, "Invalid email!"));
 
         let isPassword = await bcrypt.compare(password, isUser.password);
         if (!isPassword) return next(customError(400, "Incorrect password"));
