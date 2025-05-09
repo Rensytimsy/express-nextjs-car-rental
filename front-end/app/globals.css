@@ -8,12 +8,15 @@
 
 :root {
   /* Below are website theme colours */
-  --dark-blue: #1A365D;
+  --dark-blue: #309898;
   --vibrant-red: #E53E3E;
   --light-gray: #F7FAFC;
   --slate-blue: #4A5568;
   --teal: #38B2AC;
   --light-blue: #BEE3F8;
+  --bright-orange: #f0a226;
+  --dark-orange: #F4631E;
+  --neutral-red: #CB0404;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

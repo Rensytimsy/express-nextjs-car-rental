@@ -7,6 +7,9 @@ const config: Config = {
             fontFamily: {
                 lora: 'var(--lora-font)',
                 stylish: 'var(--stylish-font)'
+            },
+            colors: {
+                BrightOrange: "#FFAC1C"
             }
         }
     },
