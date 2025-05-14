@@ -8,6 +8,9 @@ import { graphqlHTTP } from "express-graphql";
 import { testSchema } from "../graphql/types";
 import cookieParser from "cookie-parser";
 import Cors from "cors";
+import "./config/passport"
+import passport from "passport";
+
 
 const cors_config  = Cors({
     origin: 'http://localhost:3000',
@@ -19,6 +22,7 @@ const cors_config  = Cors({
 
 const app = express();
 app.use(express.json());
+app.use(passport.initialize());
 app.use(cors_config);
 app.use(cookieParser());
 

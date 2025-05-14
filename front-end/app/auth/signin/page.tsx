@@ -55,7 +55,7 @@ export default function SignInPage() {
   const GoogleAuthentication = async() => {
     try{
       let googleRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT}/api/auth/google`);
-      console.log(googleRes.data);
+      console.log(googleRes);
     }catch(error: any){
       console.log(error);
     }
@@ -143,7 +143,7 @@ export default function SignInPage() {
               <Twitter size={23} />
             </div>
             <div className="border rounded-md p-2 hover:shadow-md cursor-pointer"
-            onClick={() => GoogleAuthentication()}
+            onClick={GoogleAuthentication}
             >
               <p>Google</p>
             </div>

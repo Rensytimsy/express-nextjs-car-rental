@@ -1,9 +1,9 @@
 import { createUser, getUsers, deleteUsers } from "../../controllers/getSmaples/userControllers";
 import { UserLogin } from "../../auth/userAuth";
 import { VerifyToken, VerifyUserToken, VerifyAdmin } from "../../auth/verfyToken";
-import { passportInit } from "../../config/passport";
+import passport from "passport";
+import {Request, Response, NextFunction, Router} from "express"
 
-import { Router } from "express";
 
 const router = Router();
 
@@ -15,6 +15,14 @@ router.get("/verify", VerifyUserToken);
 router.get("/admin", VerifyAdmin);
 
 //OAuth rotes below
-router.get("/auth/google", passportInit.authenticate("google", {scope: ["profile", "email"]}))
+router.get("/google", (req: Request, res: Response, next: NextFunction) => {    
+    try{
+        res.send(`<a href="/api/auth/google">Sign In with google</a>`);
+    }catch(error){
+        next(error);
+    }
+});
+
+router.get("/auth/google", passport.authenticate("google", {scope: ["profile", "email"]}))
 
 export default router;
