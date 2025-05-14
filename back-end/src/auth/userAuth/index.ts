@@ -2,7 +2,7 @@ import { NextFunction, Response, Request } from "express";
 import { PrismaClient } from "../../generated/prisma";
 import { customError } from "../../utils/error";
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"
 
 let prisma = new PrismaClient();
 interface SignInCredentials  {
@@ -41,3 +41,11 @@ export const UserLogin = async(req: Request, res: Response, next: NextFunction) 
     }
 }
  
+
+export const GoogleLogin = async(req: Request, res: Response, next: NextFunction) => {
+    try{    
+        res.status(200).json();
+    }catch(error: any){
+       next(error);
+    }
+}
