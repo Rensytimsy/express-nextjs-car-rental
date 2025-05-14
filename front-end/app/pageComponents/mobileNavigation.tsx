@@ -8,8 +8,8 @@ export default function MobileNavigationBar() {
         setIsMenuOpen(!isMenuOpen);
     };
     return (
-        <div className="lg:hidden w-screen">
-            <nav className="lg:hidden md:block  bg-gray-800 p-4">
+        <div className="lg:hidden w-screen border">
+            <nav className="lg:hidden md:block  bg-gray-800 p-4 w-screem">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <div className="text-white text-2xl font-bold">RC</div>

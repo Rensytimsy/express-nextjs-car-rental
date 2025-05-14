@@ -19,6 +19,7 @@ import { useState } from "react";
 import axios from "axios";
 import { redirect } from 'next/navigation';
 import { useRouter } from "next/navigation";
+import Link from "next/link"
 
 export default function SignInPage() {
   const [globalError, setGlobalError] = useState<string>();
@@ -49,6 +50,16 @@ export default function SignInPage() {
       // console.log(error.response.data.message)
     }
   };
+
+  //Below function handles google login authentication
+  const GoogleAuthentication = async() => {
+    try{
+      let googleRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT}/api/auth/google`);
+      console.log(googleRes.data);
+    }catch(error: any){
+      console.log(error);
+    }
+  }
 
   console.log("");
 
@@ -130,6 +141,11 @@ export default function SignInPage() {
             </div>
             <div className="border rounded-md p-2 hover:shadow-md cursor-pointer">
               <Twitter size={23} />
+            </div>
+            <div className="border rounded-md p-2 hover:shadow-md cursor-pointer"
+            onClick={() => GoogleAuthentication()}
+            >
+              <p>Google</p>
             </div>
           </div>
         </div>

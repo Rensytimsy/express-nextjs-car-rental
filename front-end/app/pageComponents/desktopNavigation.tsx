@@ -66,10 +66,10 @@ export function NavigationMenuDemo() {
             <NavigationMenuTrigger className="text-md">Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <ListItem href="/auth/signin" title="Sign Up">
+                <ListItem href="/auth/signin" title="Sign In">
                   Create an account with us, inorder to have access to our services
                 </ListItem>
-                <ListItem href="/docs/installation" title="Sign In">
+                <ListItem href="/auth/signup" title="Sign Up">
                   Login in to have full access of services
                 </ListItem>
                 <ListItem href="/docs/primitives/typography" title="About Us">
